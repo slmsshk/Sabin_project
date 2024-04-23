@@ -38,5 +38,15 @@ c1,c2 = st.columns(2)
 
 with c1:
     st.markdown(f"""<p>Genuine/Fake</p>""",unsafe_allow_html=True)
-with c2:
-    st.write('Fake')
+    api = st.text_input('Enter Open AI API Key')
+    if api:
+        # logic for model
+        with c2:
+            ans = llm(api,listing)
+            st.write(ans)
+    else:
+        # 
+        with c2:
+            
+            st.write('Waiting for the API Key,')
+            # st.write('Fake')
