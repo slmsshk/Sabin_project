@@ -3,10 +3,10 @@ from fun import *
 
 
 st.set_page_config('Craiglist Listing Detector',page_icon='🕵️‍♀️')
-st.write("Hello, World")
+
 # st.set
 css = """background: rgb(2,0,36);
-background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);"""
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%); color:white"""
 add_gradient_background(css)
 
 st.markdown(f"""
@@ -37,7 +37,7 @@ else:
 c1,c2 = st.columns(2)
 
 with c1:
-    st.markdown(f"""<p>Genuine/Fake</p>""",unsafe_allow_html=True)
+    st.markdown(f"""<p style=bottom-margin:-30px;color:white>Genuine/Fake</p>""",unsafe_allow_html=True)
     api = st.text_input('Enter Open AI API Key')
     if api:
         # logic for model
