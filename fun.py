@@ -6,10 +6,10 @@ import cv2
 
 
 # Function to download image from URL
-def download_image(url ):
+def download_image(url,filename ):
     response = requests.get(url)
     if response.status_code == 200:
-        with open('input.jpg', 'wb') as f:
+        with open(filename, 'wb') as f:
             f.write(response.content)
 
 # Function to compare images

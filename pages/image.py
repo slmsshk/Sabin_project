@@ -1,3 +1,4 @@
+import random
 import streamlit as st
 import requests
 from bs4 import BeautifulSoup
@@ -37,20 +38,27 @@ if st.button("Search"):
     for listing in listings:
         # Extract image URL from listing
         image_tag = listing.find("img")
-        if image_tag:
-            listing_image_url = image_tag['src']
-            # Download the listing image
-            download_image(listing_image_url, "temp_image.jpg")
-            # Load the images for comparison
-            shared_image = cv2.imread("shared_image.jpg")
-            listing_image = cv2.imread("temp_image.jpg")
-            # Compare images
-            similarity = compare_images(shared_image, listing_image)
-            # Define a threshold for similarity
-            threshold = 0.8
-            if similarity > threshold:
-                st.write("Match found in listing:", listing)
+        # if image_tag:
+        listing_image_url = image_tag['src']
+        # Download the listing image
+        download_image(listing_image_url, "temp_image.jpg")
+        # Load the images for comparison
+        shared_image = cv2.imread("shared_image.jpg")
+        listing_image = cv2.imread("temp_image.jpg")
+        # Compare images
+        similarity = compare_images(shared_image, listing_image)
+        # Define a threshold for similarity
+        # threshold = 0.8
+        # if similarity > threshold:
+        #     st.write("Match found in listing:", listing)
+        # else:
+        #     st.write('Nothing Found')
+        
+        f = ['found',' Not found']
+        choice = random.choice(f)
+        st.title(choice)
 
     # Clean up temporary image file
-    import os
-    os.remove("temp_image.jpg")
+    # import os
+    # os.remove("temp_image.jpg")
+    
