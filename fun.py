@@ -2,13 +2,34 @@ import streamlit as st
 import requests
 from bs4 import BeautifulSoup
 from openai import OpenAI
+import cv2
 
+
+# Function to download image from URL
+def download_image(url ):
+    response = requests.get(url)
+    if response.status_code == 200:
+        with open('input.jpg', 'wb') as f:
+            f.write(response.content)
+
+# Function to compare images
+def compare_images(img1, img2):
+    # Convert images to grayscale
+    gray_img1 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
+    gray_img2 = cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY)
+    
+    # Compute Structural Similarity Index (SSIM)
+    ssim = cv2.matchTemplate(gray_img1, gray_img2, cv2.TM_CCOEFF_NORMED)
+    return ssim
+
+# FUnction to scrape job description
 def scrape_job_description(url):
     response = requests.get(url)
     soup = BeautifulSoup(response.text, 'html.parser')
     job_description = soup.find('section', id='postingbody').get_text().strip()
     return job_description
 
+# Function for OpenAI prompt eng
 def llm(api,listing):
 
     client = OpenAI(api_key=api)
@@ -37,7 +58,7 @@ Your job is to analyze the provided listing description and determine whether it
 
     return completion.choices[0].message.content
 
-
+# Function to add background color
 def add_gradient_background(css):
     """
     Add a gradient background to the Streamlit app.

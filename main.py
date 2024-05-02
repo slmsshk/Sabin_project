@@ -14,9 +14,6 @@ st.markdown(f"""
             <h1 style = color:green;text-align:center> Craig List Listing Detector </h1>
             """,unsafe_allow_html=True)
 
-# st.markdown(f"""
-#             <p style = color:white;text-align:center> Enter a valid craiglist url</p>
-#             """,unsafe_allow_html=True)
 
 url = st.text_input('Enter a valid craiglist url')
 
