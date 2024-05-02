@@ -6,7 +6,11 @@ st.set_page_config('Craiglist Listing Detector',page_icon='🕵️‍♀️')
 
 # st.set
 css = """background: rgb(2,0,36);
+<<<<<<< Updated upstream
 background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%); color:white"""
+=======
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);color:yellow"""
+>>>>>>> Stashed changes
 add_gradient_background(css)
 
 st.markdown(f"""
@@ -32,13 +36,18 @@ if url:
         st.write(f'Not a valid URL {e}')
 else:
     webp_bytes = open('smiley_else_url.png', 'rb').read()
-    st.image(webp_bytes, caption='Add Url')
+    st.image(webp_bytes)
     
 c1,c2 = st.columns(2)
 
 with c1:
+<<<<<<< Updated upstream
     st.markdown(f"""<p style=bottom-margin:-30px;color:white>Genuine/Fake</p>""",unsafe_allow_html=True)
     api = st.text_input('Enter Open AI API Key')
+=======
+    st.markdown(f"""<p style=margin-bottom:-100px;>Enter Open AI API Key</p>""",unsafe_allow_html=True)
+    api = st.text_input(' ')
+>>>>>>> Stashed changes
     if api:
         # logic for model
         with c2:
